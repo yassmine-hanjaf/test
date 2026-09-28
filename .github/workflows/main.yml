@@ -9,6 +9,9 @@ on:
 jobs:
   build-et-test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Récupérer le code
@@ -29,3 +32,17 @@ jobs:
       - name: Afficher les logs en cas d'échec
         if: failure()
         run: docker logs mon-site
+
+      - name: Connexion à GitHub Container Registry
+        if: github.event_name == 'push'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publier l'image Docker
+        if: github.event_name == 'push'
+        run: |
+          docker tag atelier-web ghcr.io/${{ github.repository }}:latest
+          docker push ghcr.io/${{ github.repository }}:latest
