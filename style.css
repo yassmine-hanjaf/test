@@ -1,0 +1,92 @@
+:root {
+  --accent: #2f6f5e;
+  --fond: #f5f7fa;
+  --texte: #1f2933;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+  line-height: 1.6;
+}
+
+.entete {
+  background: var(--accent);
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  transition: background 0.3s;
+}
+
+.entete h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+main {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.carte {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--texte);
+  outline-offset: 2px;
+}
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.boite {
+  background: white;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  text-align: center;
+  padding: 1.5rem 0;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.boite:hover {
+  background: var(--accent);
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .grille {
+    grid-template-columns: 1fr;
+  }
+}

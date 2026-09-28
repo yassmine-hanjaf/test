@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier 1 - Page de test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="entete">
+    <h1>Atelier 1</h1>
+    <p>Ma première page envoyée sur GitHub</p>
+  </header>
+
+  <main>
+    <section class="carte">
+      <h2>Ça marche !</h2>
+      <p>Si vous voyez cette page avec des couleurs et une mise en forme, le fichier CSS est bien chargé.</p>
+      <button id="bouton">Changer la couleur</button>
+    </section>
+
+    <section class="grille">
+      <div class="boite">HTML</div>
+      <div class="boite">CSS</div>
+      <div class="boite">Git</div>
+    </section>
+  </main>
+
+  <script>
+    const couleurs = ["#2f6f5e", "#c2410c", "#1d4ed8", "#7e22ce"];
+    let i = 0;
+    document.getElementById("bouton").addEventListener("click", () => {
+      i = (i + 1) % couleurs.length;
+      document.documentElement.style.setProperty("--accent", couleurs[i]);
+    });
+  </script>
+</body>
+</html>
