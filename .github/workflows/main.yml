@@ -9,9 +9,6 @@ on:
 jobs:
   build-et-test:
     runs-on: self-hosted
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Récupérer le code
@@ -19,6 +16,10 @@ jobs:
 
       - name: Construire l'image Docker
         run: docker build -t atelier-web .
+
+      - name: Nettoyer un ancien conteneur
+        run: docker rm -f mon-site
+        continue-on-error: true
 
       - name: Lancer le conteneur
         run: docker run -d -p 8000:8000 --name mon-site atelier-web
