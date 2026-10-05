@@ -26,9 +26,9 @@ jobs:
 
       - name: Tester la page HTML et le CSS
         run: |
-          sleep 5
-          curl --fail http://localhost:8000/
-          curl --fail http://localhost:8000/style.css
+          Start-Sleep -Seconds 5
+          Invoke-WebRequest -Uri http://localhost:8000/ -UseBasicParsing
+          Invoke-WebRequest -Uri http://localhost:8000/style.css -UseBasicParsing
 
       - name: Afficher les logs en cas d'échec
         if: failure()
